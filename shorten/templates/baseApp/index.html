@@ -1,0 +1,33 @@
+{% extends "includes/header.html" %}
+{% block content %}
+<div class="col-sm-6 col-sm-offset-3 centerrr">
+    <div class="panel panel-primary">
+        <div class="panel-heading ">Shorten the URL</div>
+        <div class="panel-body">
+                {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                
+                {%endif%}
+            <form method="POST" class="form-inline col-sm-6 col-sm-offset-2">
+                <div class="input-group">
+                {{form.as_p}}
+                
+                {% csrf_token %}
+                <span class="input-group-btn">
+                        <input type="submit" value="Shorten It" class="btn btn-primary">
+                   </span>
+                
+            </div>
+            </form>
+
+        </div>
+        <div class="panel-footer">Developed by Arup Kumar Gupta</div>
+    </div>
+</div>
+{% endblock  %}

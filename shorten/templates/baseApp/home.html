@@ -1,0 +1,42 @@
+{% extends "includes/header.html" %}
+{% block content %}
+<div class="col-sm-6 col-sm-offset-3 centerrr">
+    <div class="panel panel-success">
+        <div class="panel-heading">Your Sortened URLs</div>
+        <div class="panel-body">
+
+            {% if allUrls %}
+                <div class="table-responsive">
+                <table class="table  table-striped">
+                    <col span="1">
+                    <thead>
+                        <th>Original URL</th>
+                        <th>Shortened URL</th>
+                    </thead>
+                    {% for x in allUrls %}
+                        <tr>
+                            <td style="white-space: nowrap;
+                            text-overflow: ellipsis;
+                            max-width: 50px;
+                            overflow: hidden;"><a href="{{x.originalUrl}}"> {{x.originalUrl}}</a></td>
+                            <td style="text-align: center;"> <a href="http://127.0.0.1:8000/{{x.shortenedUrl}}"> http://127.0.0.1:8000/{{x.shortenedUrl}} </a></td>
+                        </tr>
+                    {% endfor %}
+
+                </table>    
+            </div>
+            
+            {% else %}
+
+                <div class="jumbotron-large">
+                    Hey!!! you haven't shortened any urls yet... <a href="{%url 'baseApp:index'%}">Click here</a> to shorten one :p
+                </div>
+            {% endif %}
+
+
+        </div>
+        <div class="panel-footer" >© Developed By Arup Kumar Gupta</div>
+    </div>
+</div>
+   
+{% endblock  %}
